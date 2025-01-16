@@ -3,37 +3,216 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>TVLookup System - Login</title>
+    <title>Smart Farm Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+      body {
+        background: url('/static/img/bg-image.jpeg') no-repeat center center fixed; /* Ganti 'bg-image.jpg' dengan file gambarmu */
+        background-size: cover;
+        color: #fff;
+      }
+      .transparent-box {
+        background: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        padding: 20px;
+      }
+      .switch {
+        position: relative;
+        display: inline-block;
+        width: 40px;
+        height: 20px;
+      }
+      .switch input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+      }
+      .slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: 0.4s;
+        border-radius: 20px;
+      }
+      .slider:before {
+        position: absolute;
+        content: "";
+        height: 14px;
+        width: 14px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: 0.4s;
+        border-radius: 50%;
+      }
+      input:checked + .slider {
+        background-color: #4caf50;
+      }
+      input:checked + .slider:before {
+        transform: translateX(20px);
+      }
+    </style>
   </head>
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-dark bg-success shadow-sm">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/login">TVLookup System</a>
+          <a class="navbar-brand" href="#">Smart Farm Dashboard</a>
         </div>
       </nav>
     </header>
 
-    <main>
-      <div class="container mt-5">
-        <h1 class="text-center text-primary mb-4">Welcome to TVLookup System</h1>
-        <p class="text-center mb-5">Please choose your login type below.</p>
-
-        <div class="row justify-content-center">
-          <div class="col-md-6 text-center">
-            <a href="#" class="btn btn-primary w-50">Login as Executive Director</a>
-            <a href="#" class="btn btn-primary w-50 mt-3">Login as Producer</a>
-            <a href="#" class="btn btn-secondary w-50 mt-3">Register</a>
+    <main class="container mt-4">
+      <!-- Device Control Section -->
+      <section class="mb-5">
+        <div class="transparent-box">
+          <h3 class="mb-4">Kontrol Alat</h3>
+          <div class="d-flex justify-content-between">
+            <div>
+              <span>Kipas Angin</span>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div>
+              <span>Pemanas</span>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div>
+              <span>Kipas Angin</span>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div>
+              <span>Lampu</span>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div>
+              <span>Pompa Air</span>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+            <div>
+              <span>Pakan</span>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
+
+      <!-- Real-Time Data Section -->
+      <section class="mb-5">
+        <h3 class="text-success mb-3">Data Terbaru</h3>
+        <div class="row g-3">
+          <div class="col">
+            <div class="card text-center bg-light shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Kelembapan</h5>
+                <p class="card-text display-6">-</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center bg-light shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Kadar Ammonia</h5>
+                <p class="card-text display-6">-</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center bg-light shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Suhu</h5>
+                <p class="card-text display-6">-</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center bg-light shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Berat</h5>
+                <p class="card-text display-6">-</p>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="card text-center bg-light shadow-sm">
+              <div class="card-body">
+                <h5 class="card-title">Indikator Air/Pakan</h5>
+                <p class="card-text display-6">-</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Historical Data Section -->
+      <section>
+        <h3 class="text-success mb-3">Riwayat</h3>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="card shadow-sm" style="background: url('graph-bg-1.jpg') no-repeat center; background-size: cover;">
+              <div class="card-body">
+                <canvas id="humidityChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm" style="background: url('graph-bg-2.jpg') no-repeat center; background-size: cover;">
+              <div class="card-body">
+                <canvas id="ammoniaChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm" style="background: url('graph-bg-3.jpg') no-repeat center; background-size: cover;">
+              <div class="card-body">
+                <canvas id="temperatureChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card shadow-sm" style="background: url('graph-bg-4.jpg') no-repeat center; background-size: cover;">
+              <div class="card-body">
+                <canvas id="weightChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 mx-auto">
+            <div class="card shadow-sm" style="background: url('graph-bg-5.jpg') no-repeat center; background-size: cover;">
+              <div class="card-body">
+                <canvas id="foodWaterChart"></canvas>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="bg-primary text-light text-center p-3 mt-5 shadow-sm">
-      <p>&copy; TVLookup System</p>
+    <footer class="bg-success text-light text-center p-3 mt-5 shadow-sm">
+      <p>&copy; Smart Farm System</p>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </body>
 </html>
