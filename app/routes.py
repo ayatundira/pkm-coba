@@ -33,7 +33,7 @@ def index():
 # Halaman Login Utama
 @routes.route('/login')
 def login():
-    return render_template('smartfarm.html')
+    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
