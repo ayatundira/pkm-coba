@@ -8,7 +8,9 @@ def create_app():
     load_dotenv()
 
     # Create the Flask app
-    app = Flask(__name__, template_folder='app/templates')
+    app = Flask(__name__, 
+    template_folder='app/templates',
+    static_folder='app/static')
 
     # Set the secret key using an environment variable
     app.config['SECRET_KEY'] = os.getenv('SECRET_KEY')
